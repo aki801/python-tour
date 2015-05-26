@@ -1,0 +1,6 @@
+1. git pull (obtener cambios realizados por otros!)
+2. realizar cambios o adiciones al código
+3. git add file.ext (adicionar los cambios o adiciones realizadas al STAGE)
+4. git commit (guardar el estado de los archivos adicionados)
+5. git push (enviar los cambios al repositorio central)
+
