@@ -28,8 +28,8 @@ lp = list(P)
 
 # Se crea una cadena con espacios de la misma longitud de la
 # palabra seleccionada
-Esp = " _ "*np
-
+Esp = "-"*np
+Et= np
 # dead tiene cada uno de los estados de la muerte del monito
 dead = [" O \n   \n   \n  \n"," O \n/  \n   \n   \n"," O \n/| \n   \n   \n"," O \n/|\\\n   \n   \n"," O \n/|\\\n |\n   \n"," O \n/|\\\n |\n/  \n"," O \n/|\\\n |\n/ \\\n"," O \n/|\\\n |\n/ \\\n"]
 
@@ -52,21 +52,28 @@ intentos = 0
 print "Juguemos al ahorcado"
 print horca
 print Esp
-print 'Intenta una letra'
-L = raw_input() #lee algo de teclado
-if L in P: # revisa si existe la letra en la palabra
-  # si existe, entonces hay que buscar en que posición o posiciones
-  # está la letra en toda la palabra, así que hay que recorrerla toda
-	i=0
-	while i<np:
-		if L == P[i]: # si la letra L está np la posición i
-      		# entonces hay que remplazarla en la variable de espacios
-			Esp= Esp[:i]+L+Esp[i+1:]
-		i+=1
-	print Esp
-else:
-	if intentos>7:
+
+while Et!=0 and intentos<I:
+	print 'Intenta una letra'
+	L = raw_input() #lee algo de teclado
+	if L in P: # revisa si existe la letra en la palabra
+		# si existe, entonces hay que buscar en que posición o posiciones
+		# está la letra en toda la palabra, así que hay que recorrerla toda
+		i=0
+		while i<np:
+			if L == P[i]: # si la letra L está np la posición i
+		      	# entonces hay que remplazarla en la variable de espacios
+				Esp= Esp[:i]+L+Esp[i+1:]
+				Et= Et-1
+			i+=1
+		print Esp
+	else:
 		print dead[intentos]
-		intentos+=1
-		for intentos=7:
-			print 'Perdiste' 
+		intentos+=1	
+ 
+else:
+	if intentos==I:
+		print 'Perdiste'
+	else:
+		print 'Ganaste'
+		
