@@ -31,17 +31,76 @@ lp = list(P)
 Esp = "-"*np
 Et= np
 # dead tiene cada uno de los estados de la muerte del monito
-dead = [" O \n   \n   \n  \n"," O \n/  \n   \n   \n"," O \n/| \n   \n   \n"," O \n/|\\\n   \n   \n"," O \n/|\\\n |\n   \n"," O \n/|\\\n |\n/  \n"," O \n/|\\\n |\n/ \\\n"," O \n/|\\\n |\n/ \\\n"]
+dead = ["""
+  +----+  
+  |    |  
+  |    0  
+  |
+  |      
+  |
+  |       
+==========
+""","""  
+  +----+  
+  |    |  
+  |    0  
+  |    |
+  |      
+  |
+  |       
+==========""","""  
+  +----+  
+  |    |  
+  |    0  
+  |   /|
+  |      
+  |
+  |       
+==========""","""  
+  +----+  
+  |    |  
+  |    0  
+  |   /|\\
+  |      
+  |
+  |       
+==========""","""
+  +----+  
+  |    |  
+  |    0  
+  |   /|\\
+  |    | 
+  |       
+  |
+==========""","""
+  +----+  
+  |    |  
+  |    0  
+  |   /|\\
+  |    | 
+  |   /   
+  |
+==========
+""", """
+  +----+  
+  |    |  
+  |    0  
+  |   /|\\
+  |    | 
+  |   / \ 
+  |
+==========
+"""]
 
 # I es la longitud de dead y es el número máximo de intentos que tiene
 # el usuario para adivinar la palabra
 I = len(dead)
 
 # horca contiene el ascii para puntar la horca y es un string, lo cambio!
-horca = " +----+ \n |    | \n |      \n |      \n |      \n========"
+horca = " +----+ \n |    | \n |      \n |      \n |      \n |      \n |      \n========"
 
 # El número de intentos es:
-intentos = 0
+intentos = 1
 
 ##############
 # A partir de aquí todo el bloque de abajo debería de repetirse
