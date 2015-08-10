@@ -1,0 +1,106 @@
+Base de datos sobre coleccin de anime
+
+Nombre: Mi_anime (minusculas, no espacios, acentos, etc)
+Usuario: mi_anime
+Clave: m1an1m3(min 8 caracteres letras num, una mayus)
+
+Etructura de la base de datos:
+Crear una base de datos de animes,  
+¿cuales son los objetos bases? Videos, imagenes, canciones
+Definir las propiedades: 
+
+Anime: 
+	id (entero)
+	duracion (flotante)
+	tamaño (flotante)
+	titulo	(caracter)
+	idDirector (entero)
+	fecha (date)
+Imagen:
+	id (entero)
+	tamaño(flotante)
+	fecha(date)
+	titulo (caracter)
+Cancion:
+	id(entero)
+	idArtista(entero)
+	duracion(flotante)
+	idGenero(entero)
+	fecha(date)
+	titulo (caracter)
+
+Genero:
+	id(entero)
+	nombre (caracter)
+Director:
+	id(entero)
+	nombre(caracter)
+Artista:
+	id(entero)
+	nombre(caracter)
+
+GeneroAnime:
+	id(entero)
+	idGenero(entero)
+	idAnime(entero)
+GeneroCancion:
+	id(entero)
+	idGenero(entero)
+	idCancion(entero)
+AritstaCancion:
+	id(entero)
+	idCancion(entero)
+	idArtista(entero)
+	idAnime(entero)
+
+Relaciones:
+(Genero) <--->(Anime, Cancion)
+(Director)-->(Anime)
+(Artista)<--->(Cancion)
+
+Normalizacion:
+	(todas las relaciones tienen q ser de uno a muchos)
+	(Genero) ---> GeneroAnime, GeneroCancion <--->(Anime, Cancion)
+	(Artista)---> AritisCancion<--->(Cancion)
+
+sqlite3 Mi_anime.sqlite3 ~~~~entramos al archivo llamado Mi_Anime
+
+sqlite> select * from Anime; ~~~~ seleccionamos todo lo que este en Anime y se muestra
+1|400.0|32.0|fullmetal alchemist|1|03-05-2013
+2|2332.0|421.0|sekaiichi hatsukoi|2|09-02-2010
+
+sqlite> select * from Genero;
+1|shojo
+2|shonen
+3|yaoi
+9|mecha
+
+sqlite> select * from GeneroAnime;
+1|1|1
+2|2|2
+sqlite> select * from Director;
+1|Makoto Tezuka
+2|Seiji Mizushima
+------------------------------------------------
+sqlite> select * from Anime where fecha="03-05-2013"; ~~~~ seleccionamos todo lo que este en Anime y tenga le fecha 03-05-2013
+1|400.0|32.0|fullmetal alchemist|1|03-05-2013
+
+sqlite> select * from Anime where strftime('%Y', fecha) =  "2013";
+1|400.0|32.0|fullmetal alchemist|1|2013-04-12
+
+sqlite> select * from Director where nombre="makoto tezuka";
+
+sqlite> select * from Director where nombre="Makoto Tezuka";
+1|Makoto Tezuka
+
+sqlite> select * from Anime  left join Director on Anime.idDirector= Director.id;
+1|400.0|32.0|fullmetal alchemist|1|2013-04-12|1|Makoto Tezuka
+2|2332.0|421.0|sekaiichi hatsukoi|2|2010-09-03|2|Seiji Mizushima
+
+sqlite> select * from Anime  left join Director on Anime.idDirector= Director.id where Director.nombre="Makoto Tezuka";
+1|400.0|32.0|fullmetal alchemist|1|2013-04-12|1|Makoto Tezuka
+
+sqlite> select titulo,nombre from Anime  left join Director on Anime.idDirector= Director.id where Director.nombre="Makoto Tezuka";
+fullmetal alchemist|Makoto Tezuka
+
+
